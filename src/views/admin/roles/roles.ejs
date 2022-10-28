@@ -1,0 +1,48 @@
+<div
+  class="justify-content-between align-items-center mb-3 border-bottom-1"
+>
+  <h2>permissions</h2>
+  <div class="btn-group">
+    <a href="/admin/users/roles/create" class="btn btn-sm btn-danger"
+      >ایجاد دسته جدید</a
+    >
+    <a href="/admin/users/permissions" class="btn btn-sm btn-primary"
+      >ایجاد دسته جدید</a
+    >
+  </div>
+  <div class="table-responsive">
+    <table class= "table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>عنوان </th>
+          <th>نوع</th>
+          <th>تنظیمات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Roles.docs.forEach(roles => { %>
+        <tr>
+          <td><a href="#"><%= roles.name %></a></td>
+          <td><%= roles.label%></td>
+          <td>
+            <form
+              action="/admin/users/roles/<%= roles.id %>"
+              method="post"
+            >
+              <div class="btn-group btn-group-sm">
+                <a
+                  href="/admin/users/roles/<%= roles.id %>/edit"
+                  class="btn btn-primary"
+                  >ویرایش</a
+                >
+                
+                <button type="submit" class="btn btn-danger">حذف</button>
+              </div>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-between align-items-center mb-3 border-bottom-1">
+        <h2>پست ها</h2>
+        <div class="btn-group">
+            <a href="/admin/parts/create" class="btn btn-sm btn-primary">ایجاد پست جدید</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>عنوان مقاله</th>
+                <th>میانگین امتیاز</th>
+                <th>قیمت</th>
+                <th>تنظیمات</th>
+            </tr>
+            </thead>
+            <tbody>
+                <% Parts.docs.forEach(Parts => { %>
+                   
+                    <tr>
+                        <td><a href=""> <%= Parts.title %> </a></td>
+                        <td><%= Parts.rating %></td>
+                        <td><%= Parts.price %></td>
+                        <td>
+                            <form action="/admin/parts/delete/<%= Parts._id %>" method="post">
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/admin/parts/<%= Parts._id %>/edit"  class="btn btn-primary">ویرایش</a>
+                                    <button type="submit" class="btn btn-danger">حذف</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    
+     

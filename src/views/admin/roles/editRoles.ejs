@@ -1,0 +1,53 @@
+<div class="">
+    <div
+      class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom"
+    >
+      <h2>edit role</h2>
+    </div>
+    <form
+      class="form-horizontal"
+      action="/admin/users/roles/<%= Role.id %>"
+      method="post"
+    >
+    <%- include(viewPath('/errormessages')) -%>
+      <div class="form-group row">
+        <div class="col">
+          <label for="name" class="control-label font-weight-bold" value="<%= old('name',Role.name)%>">عنوان دوره</label>
+          <input type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            placeholder="عنوان را وارد کنید"
+            value=""
+          />
+        </div>
+      </div>
+  
+        <div class="col">
+          <label for="label" class="control-label font-weight-bold" value=" <%= old('label', Role.label )%> ">labels</label>
+          <input type="text"
+            class="form-control"
+            name="label"
+            id="label"
+            placeholder="لیبل را وارد کنید"
+            value=""
+          />
+  </div>
+  <div class="col">
+    <label for="permissions" class="control-label font-weight-bold font-weight-bold">permissions</label>
+    <select name="permissions" id="permissions" class="form-control form-control-chosen" data-placeholder="دسته بندی مورد نظر ...">
+        <% Permissions.forEach(per => { %> 
+            <option value="<%= per.id %><%= old('permissions', Role.permissions).indexOf(per.id) !== -1 ? 'selected' : ''%>"><%= per.label %></option>                        
+        <% }) %>
+    </select>
+  </div>
+  <div class="form-group row">
+    <div class="col mt-3">
+      <button type="submit" class="btn btn-danger">ارسال</button>
+    </div>
+  </div>
+  </form>
+        </div>
+      
+  </div>
+  

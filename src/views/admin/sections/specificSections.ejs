@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-between align-items-center mb-3 border-bottom-1">
+        <h2>پست ها</h2>
+        <div class="btn-group">
+            <a href="/admin/sections/create" class="btn btn-sm btn-primary">ایجاد پست جدید</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>عنوان مقاله</th>
+                <th>پست</th>
+                <th>نوع</th>
+                <th>تنظیمات</th>
+            </tr>
+            </thead>
+            <tbody>
+                <% Sections.forEach(sections => { %>
+                   
+                    <tr>
+                        <td><a href="/admin/<%= postId %>/<%= sections._id %>"> <%= sections.title %> </a></td>
+                        <td><%= sections.postsName %></td>
+                        <td><%= sections.type %></td>
+                        <td>
+                            <form action="/admin/sections/delete/<%= sections._id %>" method="post">
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/admin/sections/<%= sections._id %>/edit"  class="btn btn-primary">ویرایش</a>
+                                    <button type="submit" class="btn btn-danger">حذف</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    
+     

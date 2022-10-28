@@ -1,0 +1,67 @@
+<section class="my-5 py-5">
+  <form action="/posts" method="GET">
+  <% let {search , order , price} = req.query %>
+  <div class="container">
+    <% if(search){%>
+    <div class="form-group col-md-3">
+      <input type="hidden" name="search" value="<%= search %>" />
+      <%= search %>
+    </div>
+    <%}%>
+  <div class="form-group col-md-3">
+    <label class="checkbox-inline">
+        <input type="checkbox" name="price" value="1" class="ml-2" <%= price === '1' ? 'checked' : '' %>>کمترین قیمت
+    </label>
+</div>
+    <div class="form-group col-md-3">
+      <label class="checkbox-inline">
+          <input type="checkbox" name="order" value="1" class="ml-2" <%= order === '1' ? 'checked' : '' %>>از اول به آخر
+      </label>
+  </div>
+  <div class="form-group col-md-3">
+    <button class="btn btn-danger" type="submit">فیلتر</button>
+</div>
+</form>
+    <div class="row align-items-center">
+      <% Posts.forEach ( Posts => { %>
+      <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+        <div class="rotating-card-container">
+          <div
+            class="card card-rotate card-background card-background-mask-primary shadow-primary mt-md-0 mt-5"
+          >
+            <div
+              class="front front-background"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80);
+                background-size: cover;
+              "
+            >
+              <div class="card-body py-7 text-center">
+                <i class="material-icons text-white text-4xl my-3">touch_app</i>
+                <h3 class="text-white"><%= Posts.title %></h3>
+                <p class="text-white opacity-8"><%= Posts.price %> قیمت</p>
+              </div>
+            </div>
+            <div
+              class="back back-background"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1498889444388-e67ea62c464b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1365&q=80);
+                background-size: cover;
+              "
+            >
+              <div class="card-body pt-7 text-center">
+                <a
+                  href="<%= Posts.Path() %>"
+                  target="_blank"
+                  class="btn btn-white btn-sm w-50 mx-auto mt-3"
+                  >Click Me</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>

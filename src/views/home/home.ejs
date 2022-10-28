@@ -1,0 +1,62 @@
+<header class="header-2">
+  <div class="page-header min-vh-75 relative" style="background-image: url('/img/bg2.jpg')">
+    <span class="mask bg-gradient-primary opacity-4"></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 text-center mx-auto">
+          <h1 class="text-white pt-3 mt-n5">BLOG</h1>
+          <p class="lead text-white mt-3">Blog For Everyone</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="col-lg-4 ms-lg-auto col-md-4 col-sm-3 d-flex justify-content-center">
+</div>
+<section class="my-5 py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <% Posts.forEach(Posts => { %>
+      <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+        <div class="rotating-card-container">
+          <div class="card card-rotate card-background card-background-mask-primary shadow-primary mt-md-0 mt-5">
+            <div class="front front-background" style="background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80); background-size: cover;">
+              <div class="card-body py-7 text-center">
+                <i class="material-icons text-white text-4xl my-3">touch_app</i>
+                <h3 class="text-white"><%= Posts.title %></h3>
+                <p class="text-white opacity-8"><%= Posts.price %> قیمت</p>
+              </div>
+            </div>
+            <div class="back back-background" style="background-image: url(https://images.unsplash.com/photo-1498889444388-e67ea62c464b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1365&q=80); background-size: cover;">
+              <div class="card-body pt-7 text-center">
+                <a href="<%- Posts.Path() %>" target="_blank" class="btn btn-white btn-sm w-50 mx-auto mt-3">Click Me</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 ms-auto">
+        <h4 class="mb-1">Thank you for your support!</h4>
+        <p class="lead mb-0">We deliver the best web products</p>
+      </div>
+      <div class="col-lg-5 me-lg-auto my-lg-auto text-lg-end mt-5">
+        <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Kit%20made%20by%20%40CreativeTim%20%23webdesign%20%23designsystem%20%23bootstrap5&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fmaterial-kit" class="btn btn-twitter mb-0 me-2" target="_blank">
+          <i class="fab fa-twitter me-1"></i> Tweet
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-kit" class="btn btn-facebook mb-0 me-2" target="_blank">
+          <i class="fab fa-facebook-square me-1"></i> Share
+        </a>
+        <a href="https://www.pinterest.com/pin/create/button/?url=https://www.creative-tim.com/product/material-kit" class="btn btn-pinterest mb-0 me-2" target="_blank">
+          <i class="fab fa-pinterest me-1"></i> Pin it
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

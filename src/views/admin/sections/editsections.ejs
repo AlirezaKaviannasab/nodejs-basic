@@ -1,0 +1,65 @@
+
+  
+<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+    <h2>ویرایش</h2>
+</div>
+<form class="form-horizontal" action="/admin/parts/<%= Parts._id %>" method="post">
+    <%- include(viewPath('/errormessages')) -%>
+    <div class="form-group row">
+        <div class="col">
+            <label for="title" class="control-label font-weight-bold">عنوان دوره</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="عنوان را وارد کنید" value="<%=  Parts.title %>">
+        </div>
+    </div> 
+    <textarea name="description" id="description"><%= Parts.description %></textarea>
+    <div class="form-group row">
+        <div class="col">
+            <label for="posts" class="control-label font-weight-bold font-weight-bold">پست</label>
+            <select name="posts" id="posts" class="form-control form-control-chosen" data-placeholder="دسته بندی مورد نظر ...">
+                <% Posts.forEach(post => { %> 
+                    <option value="<%= post.id %>"<%= Parts.posts.indexOf(post.id) !== -1 ? 'selected' : ''%> ><%= post.title %></option>                        
+                <% }) %>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <label for="tags" class="control-label font-weight-bold font-weight-bold">تگ ها</label>
+            <select name="tags" id="tags" class="form-control form-control-chosen" data-placeholder="دسته بندی مورد نظر ..." multiple>
+                <% Tags.forEach(tag => { %> 
+                    <option value="<%= tag.id %>"><%= tag.name %></option>                        
+                <% }) %>
+            </select>
+        </div>
+    </div> 
+    <div class="form-group row"> 
+        <div class="col">
+            <label for="price" class="control-label font-weight-bold">قیمت</label>
+            <input type="text" class="form-control" name="price" id="price" placeholder="قیمت ها را وارد کنید" value="<%= Parts.price %>">
+        </div>
+        <div class="col">
+            <label for="links" class="control-label font-weight-bold">لینک</label>
+            <input
+              type="text"
+              class="form-control"
+              name="links"
+              id="links"
+              placeholder="لینک ها را وارد کنید"
+              value="<%= Parts.links %>"
+            />
+          </div>
+          <div class="col">
+            <label for="type" class="control-label font-weight-bold font-weight-bold">نوع</label>
+            <select class="form-select" name="type" id="type">
+                <option value="paid">نقدی</option>
+                <option value="free">رایگان</option>
+                <option value="vip">ویژه</option>                       
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <button type="submit" class="btn btn-danger">ثبت</button>
+        </div>
+    </div>
+</form>

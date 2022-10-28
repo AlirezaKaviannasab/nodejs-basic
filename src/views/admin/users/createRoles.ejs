@@ -1,0 +1,41 @@
+<div class="">
+  <div
+    class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom"
+  >
+    <h2>add roles</h2>
+  </div>
+  <form
+    class="form-horizontal"
+    action="/admin/users/<%= Users.id %>/addroles"
+    method="post"
+  >
+  <%- include(viewPath('/errormessages')) -%>
+    <div class="form-group row">
+      <div class="col">
+        <label for="name" class="control-label font-weight-bold">عنوان دوره</label>
+        <input type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          placeholder="عنوان را وارد کنید"
+          value="<%= Users.name + ' - ' + Users.email %>"
+        />
+      </div>
+    </div>
+<div class="col">
+  <label for="roles" class="control-label font-weight-bold font-weight-bold">roles</label>
+  <select name="roles" id="roles" class="form-control form-control-chosen" data-placeholder="دسته بندی مورد نظر ...">
+      <% Roles.forEach(role => { %> 
+          <option value="<%= role.id %><%= old('Roles' , Roles).indexOf(role.id) !== -1 ? 'selected' : ''%>"><%= role.name %></option>                        
+      <% }) %>
+  </select>
+</div>
+<div class="form-group row">
+  <div class="col mt-3">
+    <button type="submit" class="btn btn-danger">ارسال</button>
+  </div>
+</div>
+</form>
+      </div>
+    
+</div>

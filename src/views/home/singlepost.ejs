@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Post - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles1.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Page content-->
+        <div class="container mt-8">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1"><%= Posts.title %></h1>
+                            <% if(Posts.type == 'paid'){%>
+                                  <h5>price : <%- Posts.price %></h5>
+                            <% }%>
+                            <% if(Posts.type == 'vip'){%>
+                                <section class="mb-5">
+                                    vip ONLY
+                                </section>
+                            <% }%>
+                            <% if(Posts.type == 'free'){%>
+                                <section class="mb-5">
+                                    FREE
+                                </section>
+                            <% }%>
+                            <!-- Post categories-->
+                            <%= Categories.categories[0].name %>
+                            
+                        </header>
+                        <!-- Post content-->
+                        
+                        <section class="container mb-5">
+                            <%- Posts.description %>
+                        </section>
+                        <% if(User == true){%>
+                            <% Sections.forEach( sec => { %>
+                                <p><%= sec.title %></p>
+                            <% Parts.forEach( part => {%>
+                                <% if(part.sections == sec.id){ %>
+                                    <%= part.title %>
+                                    <a href="/files/<%= part.download() %>"> Link </a
+                                    <% } %>
+                            <% }) %>
+                            <% })%>
+                        <% } else if(User == false){%>
+                        <section class="container mb-5">
+                            <%- include(viewPath('/purchasing') , {subject : Posts}) %>
+                        </section>
+                        <%  } %>
+                        <section class="mb-2">
+                            <%- include(viewPath('/rating') , {subject : Posts._id}) %>
+                        </section>
+                        
+                        <% if(userRole == "notLoggedIn"){%>
+                            <p>باید لاگ این شوید</p>
+                        <% }else if(userRole == "vip"){%>
+                        <%- include(viewPath('/comments') , { subject : Posts , Comments : Posts.Comments}) %>
+                        <%}else{%>
+                            <p>باید Vip</p>
+                           <% } %> 
+                    </article>
+                </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts1.js"></script>
+    </body>
+</html>

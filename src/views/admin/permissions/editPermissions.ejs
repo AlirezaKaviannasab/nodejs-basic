@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+    <h2>ویرایش دسته</h2>
+</div>
+<form class="form-horizontal" action="/admin/users/permissions/<%= Permissions.id %>" method="post">
+
+    <%- include(viewPath('/errormessages')) -%>
+
+    <div class="form-group row">
+        <div class="col">
+            <label for="name" class="control-label font-weight-bold">عنوان دسته</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="عنوان را وارد کنید" value="<%= old('name' , Permissions.name ) %>">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <label for="label" class="control-label font-weight-bold font-weight-bold">دسته مربوطه</label>
+            <input type="text" class="form-control" name="label" id="label" placeholder="لیبل را وارد کنید" value="<%= old('label' , Permissions.label ) %>">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <button type="submit" class="btn btn-info">ویرایش</button>
+        </div>
+    </div>
+</form>
+
+
+
